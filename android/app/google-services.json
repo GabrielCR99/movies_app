@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "276882000421",
+    "project_id": "dart-week-movies-app",
+    "storage_bucket": "dart-week-movies-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276882000421:android:3b5992aa370c5151ca8dcc",
+        "android_client_info": {
+          "package_name": "br.com.roveri.movies_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276882000421-6l17mrc00jeeba5nk5ri6lpdtdgdts0f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.roveri.movies_app",
+            "certificate_hash": "678c106f3ed40b313bfcd877b0bedcc2f08b9933"
+          }
+        },
+        {
+          "client_id": "276882000421-6ppgvcipgngi4andk58qk1fm3t7hcnb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsSCfB5PwiJxoXpjioCDdxS3IqZKKlTac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276882000421-6ppgvcipgngi4andk58qk1fm3t7hcnb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
