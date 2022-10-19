@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
+  dio: ^4.0.6
   firebase_auth: ^4.0.1
   firebase_core: ^2.0.0
   firebase_remote_config: ^3.0.1
@@ -29,3 +30,14 @@ flutter:
 
   assets:
     - assets/images/
+
+  fonts:
+    - family: MoviesAppIcons
+      fonts:
+        - asset: assets/fonts/MoviesAppIcons.ttf
+    - family: Metropolis
+      fonts:
+        - asset: assets/fonts/metropolis/Metropolis-Regular.otf
+        - asset: assets/fonts/metropolis/Metropolis-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/metropolis/Metropolis-Bold.otf
