@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/ui/widgets/movie_card.dart';
+import '../../../models/movie_model.dart';
 
 class MoviesGroup extends StatelessWidget {
   final String title;
-  const MoviesGroup({required this.title, super.key});
+  final List<MovieModel> movies;
+
+  const MoviesGroup({required this.title, required this.movies, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +24,13 @@ class MoviesGroup extends StatelessWidget {
           ),
           SizedBox(
             height: 280,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (_, index) => const MovieCard(),
-              itemCount: 10,
+            child: Obx(
+              () => ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (_, index) => MovieCard(movie: movies[index]),
+                itemCount: movies.length,
+              ),
             ),
           ),
         ],

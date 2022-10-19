@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:get/get.dart';
+
+import '../movies_controller.dart';
 
 class MoviesHeader extends StatelessWidget {
-  const MoviesHeader({super.key});
+  MoviesHeader({super.key});
+
+  final _controller = Get.find<MoviesController>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +26,9 @@ class MoviesHeader extends StatelessWidget {
           Container(
             width: context.width * 0.9,
             padding: const EdgeInsets.only(bottom: 20),
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              onChanged: _controller.filterByName,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),

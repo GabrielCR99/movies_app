@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:get/get.dart';
 
+import 'movies_controller.dart';
 import 'widgets/movies_filter.dart';
 import 'widgets/movies_group.dart';
 import 'widgets/movies_header.dart';
 
 class MoviesPage extends StatelessWidget {
-  const MoviesPage({super.key});
+  MoviesPage({super.key});
+
+  final _controller = Get.find<MoviesController>();
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,16 @@ class MoviesPage extends StatelessWidget {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: [
-            const MoviesHeader(),
+            MoviesHeader(),
             MoviesFilter(),
-            const MoviesGroup(title: 'Mais populares'),
-            const MoviesGroup(title: 'Top Filmes'),
+            MoviesGroup(
+              title: 'Mais populares',
+              movies: _controller.popularMovies,
+            ),
+            MoviesGroup(
+              title: 'Top Filmes',
+              movies: _controller.topRatedMovies,
+            ),
           ],
         ),
       ),

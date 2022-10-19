@@ -21,7 +21,8 @@ class MoviesFilter extends StatelessWidget {
               .map(
                 (genre) => FilterTag(
                   genre: genre,
-                  onPressed: () {},
+                  onPressed: () => _controller.filterMoviesByGenres(genre),
+                  selected: _controller.genreSelected.value?.id == genre.id,
                 ),
               )
               .toList(),

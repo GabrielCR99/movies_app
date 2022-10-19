@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
     if (settings.name == '/movies') {
       return GetPageRoute(
         settings: settings,
-        page: () => const MoviesPage(),
+        page: MoviesPage.new,
         binding: MoviesBindings(),
       );
     }

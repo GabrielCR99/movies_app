@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+import '../../../models/movie_model.dart';
 import '../movies_app_icons.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
+  final MovieModel movie;
+
+  const MovieCard({required this.movie, super.key});
+
+  static final _dateFormat = DateFormat('dd/MM/y');
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class MovieCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     child: Image.network(
-                      'https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg',
+                      movie.posterPath,
                       width: 148,
                       height: 184,
                       fit: BoxFit.cover,
@@ -32,15 +38,18 @@ class MovieCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Bloodshot',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                Text(
+                  movie.title,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const Text(
-                  '2022',
-                  style: TextStyle(
+                Text(
+                  _dateFormat.format(DateTime.parse(movie.releaseDate)),
+                  style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
                     color: Colors.grey,
