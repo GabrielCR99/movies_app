@@ -3,15 +3,14 @@ import 'package:get/get.dart';
 
 import '../../core/ui/movies_app_icons.dart';
 import '../../core/ui/theme_extension.dart';
+import '../favorites/favorites_bindings.dart';
 import '../favorites/favorites_page.dart';
 import '../movies/movies_bindings.dart';
 import '../movies/movies_page.dart';
 import 'home_controller.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  final _controller = Get.find<HomeController>();
+class HomePage extends GetView<HomeController> {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +28,10 @@ class HomePage extends StatelessWidget {
               label: 'Sair',
             ),
           ],
-          onTap: _controller.goToPage,
+          onTap: controller.goToPage,
           selectedItemColor: context.redTheme,
           unselectedItemColor: Colors.grey,
-          currentIndex: _controller.pageIndex,
+          currentIndex: controller.pageIndex,
         ),
       ),
       body: Navigator(
@@ -47,7 +46,7 @@ class HomePage extends StatelessWidget {
     if (settings.name == '/movies') {
       return GetPageRoute(
         settings: settings,
-        page: MoviesPage.new,
+        page: () => const MoviesPage(),
         binding: MoviesBindings(),
       );
     }
@@ -56,6 +55,7 @@ class HomePage extends StatelessWidget {
       return GetPageRoute(
         settings: settings,
         page: () => const FavoritesPage(),
+        binding: FavoritesBindings(),
       );
     }
 

@@ -5,10 +5,8 @@ import 'package:get/get.dart';
 
 import 'login_controller.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
-
-  final _controller = Get.find<LoginController>();
+class LoginPage extends GetView<LoginController> {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class LoginPage extends StatelessWidget {
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                     ),
-                    onPressed: _controller.login,
+                    onPressed: controller.login,
                     text: 'Entrar com o Google',
                   ),
                 ),

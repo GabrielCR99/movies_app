@@ -9,16 +9,19 @@ environment:
   sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
+  cloud_firestore: ^4.0.2
   dio: ^4.0.6
   firebase_auth: ^4.0.1
   firebase_core: ^2.0.0
   firebase_remote_config: ^3.0.1
   flutter:
     sdk: flutter
+  flutter_rating_stars: ^1.0.3+4
   flutter_signin_button: ^2.0.0
   get: ^4.6.5
   google_sign_in: ^5.4.2
   intl: ^0.17.0
+  transparent_image: ^2.0.0
 
 dev_dependencies:
   dart_code_metrics: ^4.21.2
