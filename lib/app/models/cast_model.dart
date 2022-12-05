@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class CastModel {
   final String name;
   final String image;
@@ -11,24 +9,15 @@ class CastModel {
     required this.character,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'image': image,
-      'character': character,
-    };
-  }
+  Map<String, dynamic> toMap() => {
+        'name': name,
+        'image': image,
+        'character': character,
+      };
 
-  factory CastModel.fromMap(Map<String, dynamic> map) {
-    return CastModel(
-      name: map['original_name'] ?? '',
-      image: 'https://image.tmdb.org/t/p/w200/${map['profile_path']}',
-      character: map['character'],
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory CastModel.fromJson(String source) =>
-      CastModel.fromMap(json.decode(source));
+  factory CastModel.fromMap(Map<String, dynamic> map) => CastModel(
+        name: map['original_name'] ?? '',
+        image: 'https://image.tmdb.org/t/p/w200/${map['profile_path']}',
+        character: map['character'],
+      );
 }

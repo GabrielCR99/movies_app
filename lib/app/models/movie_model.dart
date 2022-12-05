@@ -24,16 +24,14 @@ class MovieModel {
         'favorite': favorite,
       };
 
-  factory MovieModel.fromMap(Map<String, dynamic> map) {
-    return MovieModel(
-      id: map['id']?.toInt() ?? 0,
-      title: map['title'] ?? '',
-      posterPath: 'https://image.tmdb.org/t/p/w200/${map['poster_path']}',
-      releaseDate: map['release_date'] ?? '',
-      genres: List<int>.from(map['genre_ids']),
-      favorite: map['favorite'] ?? false,
-    );
-  }
+  factory MovieModel.fromMap(Map<String, dynamic> map) => MovieModel(
+        id: map['id']?.toInt() ?? 0,
+        title: map['title'] ?? '',
+        posterPath: 'https://image.tmdb.org/t/p/w200/${map['poster_path']}',
+        releaseDate: map['release_date'] ?? '',
+        genres: List<int>.from(map['genre_ids']),
+        favorite: map['favorite'] ?? false,
+      );
 
   MovieModel copyWith({
     int? id,
@@ -42,14 +40,13 @@ class MovieModel {
     String? releaseDate,
     List<int>? genres,
     bool? favorite,
-  }) {
-    return MovieModel(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      posterPath: posterPath ?? this.posterPath,
-      releaseDate: releaseDate ?? this.releaseDate,
-      genres: genres ?? this.genres,
-      favorite: favorite ?? this.favorite,
-    );
-  }
+  }) =>
+      MovieModel(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        posterPath: posterPath ?? this.posterPath,
+        releaseDate: releaseDate ?? this.releaseDate,
+        genres: genres ?? this.genres,
+        favorite: favorite ?? this.favorite,
+      );
 }
