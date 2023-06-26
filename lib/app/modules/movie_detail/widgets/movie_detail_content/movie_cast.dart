@@ -12,8 +12,8 @@ class MovieCast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 95,
       padding: const EdgeInsets.all(10),
+      width: 95,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,7 +37,7 @@ class MovieCast extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             cast?.character ?? '',
-            style: TextStyle(fontSize: 12, color: context.greyTheme),
+            style: TextStyle(color: context.greyTheme, fontSize: 12),
           ),
         ],
       ),

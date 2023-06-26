@@ -4,13 +4,13 @@ import '../modules/home/home_bindings.dart';
 import '../modules/home/home_page.dart';
 
 class HomeRoute {
-  const HomeRoute._();
-
   static final routes = [
-    GetPage(
+    GetPage<HomePage>(
       name: '/home',
       page: HomePage.new,
       binding: HomeBindings(),
     ),
   ];
+
+  const HomeRoute._();
 }

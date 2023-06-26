@@ -29,7 +29,6 @@ class MoviesGroup extends GetView<MoviesController> {
               () => ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
-                itemCount: movies.length,
                 itemBuilder: (_, index) {
                   final movie = movies[index];
 
@@ -38,6 +37,7 @@ class MoviesGroup extends GetView<MoviesController> {
                     favoriteCallback: () => controller.favoriteMovie(movie),
                   );
                 },
+                itemCount: movies.length,
               ),
             ),
           ),

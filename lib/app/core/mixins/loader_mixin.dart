@@ -5,7 +5,7 @@ mixin LoaderMixin on GetxController {
   void loaderListener(RxBool loadingRx) => ever(
         loadingRx,
         (loading) => loading
-            ? Get.dialog(
+            ? Get.dialog<void>(
                 WillPopScope(
                   onWillPop: () async => false,
                   child:
@@ -13,6 +13,6 @@ mixin LoaderMixin on GetxController {
                 ),
                 barrierDismissible: false,
               )
-            : Get.back(),
+            : Get.back<void>(),
       );
 }

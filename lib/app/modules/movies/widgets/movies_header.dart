@@ -11,35 +11,32 @@ class MoviesHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 196,
       width: context.width,
+      height: 196,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           SizedBox(
             width: context.width,
-            child: Image.asset(
-              'assets/images/header.png',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/images/header.png', fit: BoxFit.cover),
           ),
           Container(
-            width: context.width * 0.9,
             padding: const EdgeInsets.only(bottom: 20),
+            width: context.width * 0.9,
             child: TextField(
-              onChanged: _controller.filterByName,
               decoration: const InputDecoration(
+                label: Text('Procurar filmes'),
+                labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+                contentPadding: EdgeInsets.zero,
+                prefixIcon: Icon(Icons.search),
+                filled: true,
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),
-                fillColor: Colors.white,
-                filled: true,
-                label: Text('Procurar filmes'),
-                prefixIcon: Icon(Icons.search),
-                contentPadding: EdgeInsets.zero,
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                labelStyle: TextStyle(fontSize: 15, color: Colors.grey),
               ),
+              onChanged: _controller.filterByName,
             ),
           ),
         ],

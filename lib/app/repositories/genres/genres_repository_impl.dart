@@ -16,7 +16,7 @@ class GenresRepositoryImpl implements GenresRepository {
   @override
   Future<List<GenreModel>> getGenres() async {
     try {
-      final response = await _restClient.get(
+      final response = await _restClient.get<Map<String, dynamic>>(
         '/genre/movie/list',
         queryParameters: {
           'api_key': FirebaseRemoteConfig.instance.getString('api_token'),
@@ -24,13 +24,13 @@ class GenresRepositoryImpl implements GenresRepository {
         },
       );
 
-      final data = (response.data['genres'] ?? const <GenreModel>[]) as List;
+      final data = (response.data!['genres'] ?? const <GenreModel>[]) as List;
 
       return data
           .cast<Map<String, dynamic>>()
           .map<GenreModel>(GenreModel.fromJson)
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Error: ${e.message}', error: e, stackTrace: s);
 
       Error.throwWithStackTrace(Exception('Erro ao buscar genres'), s);

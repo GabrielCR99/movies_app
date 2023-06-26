@@ -8,7 +8,6 @@ class CastModel {
     required this.image,
     required this.character,
   });
-
   Map<String, dynamic> toMap() => {
         'name': name,
         'image': image,
@@ -16,8 +15,8 @@ class CastModel {
       };
 
   factory CastModel.fromMap(Map<String, dynamic> map) => CastModel(
-        name: map['original_name'] ?? '',
+        name: (map['name'] ?? '') as String,
         image: 'https://image.tmdb.org/t/p/w200/${map['profile_path']}',
-        character: map['character'],
+        character: (map['character'] ?? '') as String,
       );
 }

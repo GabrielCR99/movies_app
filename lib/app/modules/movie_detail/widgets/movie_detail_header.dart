@@ -20,16 +20,16 @@ class MovieDetailHeader extends StatelessWidget {
         ? SizedBox(
             height: 278,
             child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemCount: images.length,
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (_, index) => Padding(
                 padding: const EdgeInsets.all(2),
                 child: FadeInImage.memoryNetwork(
-                  image: images[index],
                   placeholder: kTransparentImage,
+                  image: images[index],
                 ),
               ),
+              itemCount: images.length,
             ),
           )
         : const Nil();

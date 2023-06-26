@@ -13,20 +13,20 @@ class MovieDetailContentProductionCompanies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
       child: RichText(
         text: TextSpan(
           text: 'Companhia(s) produtora(s): ',
           style: const TextStyle(
-            fontWeight: FontWeight.bold,
             color: Color(0xFF222222),
+            fontWeight: FontWeight.bold,
           ),
           children: [
             TextSpan(
               text: movieDetail?.productionCompanies.join(', ') ?? '',
               style: const TextStyle(
-                fontWeight: FontWeight.normal,
                 color: Color(0xFF222222),
+                fontWeight: FontWeight.normal,
               ),
             ),
           ],

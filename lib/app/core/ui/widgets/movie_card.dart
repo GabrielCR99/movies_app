@@ -22,7 +22,7 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed('/movie-detail', arguments: movie.id),
+      onTap: () => Get.toNamed<void>('/movie-detail', arguments: movie.id),
       child: SizedBox(
         width: 158,
         height: 280,
@@ -40,8 +40,8 @@ class MovieCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                       child: FadeInImage.memoryNetwork(
-                        image: movie.posterPath,
                         placeholder: kTransparentImage,
+                        image: movie.posterPath,
                         width: 148,
                         height: 184,
                         fit: BoxFit.cover,
@@ -55,23 +55,23 @@ class MovieCard extends StatelessWidget {
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
-                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                   Text(
                     _dateFormat.format(DateTime.parse(movie.releaseDate)),
                     style: const TextStyle(
+                      color: Colors.grey,
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
-                      color: Colors.grey,
                     ),
                   ),
                 ],
               ),
             ),
             Positioned(
-              bottom: 90,
               right: -10,
+              bottom: 90,
               child: Material(
                 elevation: 5,
                 shape: const CircleBorder(),
@@ -79,8 +79,8 @@ class MovieCard extends StatelessWidget {
                 child: SizedBox(
                   height: 30,
                   child: IconButton(
-                    onPressed: favoriteCallback,
                     iconSize: 13,
+                    onPressed: favoriteCallback,
                     icon: Icon(
                       movie.favorite
                           ? MoviesAppIcons.heart

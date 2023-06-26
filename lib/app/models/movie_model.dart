@@ -15,7 +15,7 @@ class MovieModel {
     required this.favorite,
   });
 
-  Map<String, Object> toMap() => {
+  Map<String, dynamic> toMap() => <String, dynamic>{
         'id': id,
         'title': title,
         'poster_path': posterPath,
@@ -25,12 +25,12 @@ class MovieModel {
       };
 
   factory MovieModel.fromMap(Map<String, dynamic> map) => MovieModel(
-        id: map['id']?.toInt() ?? 0,
-        title: map['title'] ?? '',
+        id: (map['id'] ?? 0) as int,
+        title: (map['title'] ?? '') as String,
         posterPath: 'https://image.tmdb.org/t/p/w200/${map['poster_path']}',
-        releaseDate: map['release_date'] ?? '',
-        genres: List<int>.from(map['genre_ids']),
-        favorite: map['favorite'] ?? false,
+        releaseDate: (map['release_date'] ?? '1900-01-01') as String,
+        genres: List<int>.from((map['genre_ids'] ?? const <int>[]) as List),
+        favorite: (map['favorite'] ?? false) as bool,
       );
 
   MovieModel copyWith({

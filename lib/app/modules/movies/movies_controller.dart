@@ -9,6 +9,15 @@ import '../../services/genres/genres_service.dart';
 import '../../services/movies/movies_service.dart';
 
 class MoviesController extends GetxController with LoaderMixin, MessageMixin {
+  final genres = <GenreModel>[].obs;
+  final popularMovies = <MovieModel>[].obs;
+  final topRatedMovies = <MovieModel>[].obs;
+  final genreSelected = Rxn<GenreModel>();
+  final _message = Rxn<MessageModel>();
+  final _loading = false.obs;
+  var _originalPopularMovies = <MovieModel>[];
+  var _originalTopRatedMovies = <MovieModel>[];
+
   final GenresService _genresService;
   final MoviesService _moviesService;
   final AuthService _authService;
@@ -20,16 +29,6 @@ class MoviesController extends GetxController with LoaderMixin, MessageMixin {
   })  : _genresService = genresService,
         _moviesService = moviesService,
         _authService = authService;
-
-  final _message = Rxn<MessageModel>();
-  final _loading = false.obs;
-  final genres = <GenreModel>[].obs;
-  final popularMovies = <MovieModel>[].obs;
-  final topRatedMovies = <MovieModel>[].obs;
-  final genreSelected = Rxn<GenreModel>();
-
-  var _originalPopularMovies = <MovieModel>[];
-  var _originalTopRatedMovies = <MovieModel>[];
 
   @override
   void onInit() {

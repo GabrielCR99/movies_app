@@ -7,16 +7,15 @@ import '../../services/movies/movies_service.dart';
 
 class MovieDetailController extends GetxController
     with LoaderMixin, MessageMixin {
+  var movie = Rxn<MovieDetailModel>();
+  final _loading = false.obs;
+  final _message = Rxn<MessageModel>();
+  final _movieImages = <String>[].obs;
+
   final MoviesService _moviesService;
 
   MovieDetailController({required MoviesService moviesService})
       : _moviesService = moviesService;
-
-  final _loading = false.obs;
-  final _message = Rxn<MessageModel>();
-
-  var movie = Rxn<MovieDetailModel>();
-  final _movieImages = <String>[].obs;
 
   List<String> get movieImages => _movieImages;
 

@@ -20,18 +20,18 @@ class FilterTag extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.all(5),
-        constraints: const BoxConstraints(minWidth: 100, minHeight: 30),
         decoration: BoxDecoration(
           color: selected ? context.redTheme : Colors.black,
           borderRadius: const BorderRadius.all(Radius.circular(30)),
         ),
+        constraints: const BoxConstraints(minWidth: 100, minHeight: 30),
+        margin: const EdgeInsets.all(5),
         child: Center(
           child: Text(
             genre.name,
-            textAlign: TextAlign.center,
             style: const TextStyle(color: Colors.white, fontSize: 14),
+            textAlign: TextAlign.center,
           ),
         ),
       ),

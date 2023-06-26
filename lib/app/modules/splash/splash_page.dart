@@ -9,14 +9,14 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          width: context.width,
-          height: context.height,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/bg.png'),
               fit: BoxFit.cover,
             ),
           ),
+          width: context.width,
+          height: context.height,
           child: Image.asset('assets/images/logo.png'),
         ),
       ),

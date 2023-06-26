@@ -13,8 +13,8 @@ class MoviesFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.only(top: 20),
+      physics: const BouncingScrollPhysics(),
       child: Obx(
         () => Row(
           children: _controller.genres

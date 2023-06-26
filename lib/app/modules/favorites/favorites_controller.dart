@@ -6,11 +6,11 @@ import '../../models/movie_model.dart';
 import '../../services/movies/movies_service.dart';
 
 class FavoritesController extends GetxController with LoaderMixin {
+  var movies = <MovieModel>[].obs;
   final AuthService _authService;
   final MoviesService _moviesService;
 
   final _loading = false.obs;
-  var movies = <MovieModel>[].obs;
 
   FavoritesController({
     required AuthService authService,

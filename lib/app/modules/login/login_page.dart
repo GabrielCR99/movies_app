@@ -16,9 +16,9 @@ class LoginPage extends GetView<LoginController> {
         children: [
           Image.asset(
             'assets/images/bg.png',
-            fit: BoxFit.cover,
             width: context.width,
             height: context.height,
+            fit: BoxFit.cover,
           ),
           const ColoredBox(color: Colors.black45),
           Padding(
@@ -32,10 +32,10 @@ class LoginPage extends GetView<LoginController> {
                   height: 42,
                   child: SignInButton(
                     Buttons.Google,
+                    onPressed: controller.login,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                     ),
-                    onPressed: controller.login,
                     text: 'Entrar com o Google',
                   ),
                 ),

@@ -9,9 +9,9 @@ class AuthService extends GetxService {
       this.user = user;
 
       if (user == null) {
-        Get.offAllNamed('/login');
+        Get.offAllNamed<void>('/login');
       } else {
-        Get.offAllNamed('/home');
+        Get.offAllNamed<void>('/home');
       }
     });
   }

@@ -24,14 +24,14 @@ class MovieDetailTitle extends StatelessWidget {
           const SizedBox(height: 10),
           RatingStars(
             value: (movieDetail?.stars ?? 1) / 2,
+            starSize: 14,
             valueLabelVisibility: false,
             starColor: context.orangeTheme,
-            starSize: 14,
           ),
           const SizedBox(height: 10),
           Text(
             movieDetail?.genres.map((e) => e.name).join(', ') ?? '',
-            style: TextStyle(fontSize: 11, color: context.greyTheme),
+            style: TextStyle(color: context.greyTheme, fontSize: 11),
           ),
         ],
       ),

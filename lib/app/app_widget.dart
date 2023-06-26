@@ -11,11 +11,11 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      enableLog: false,
       title: MoviesAppUiConfig.title,
-      getPages: AppRoutes.routes,
-      initialBinding: ApplicationBindings(),
       theme: MoviesAppUiConfig.theme,
+      getPages: AppRoutes.routes,
+      enableLog: false,
+      initialBinding: ApplicationBindings(),
     );
   }
 }

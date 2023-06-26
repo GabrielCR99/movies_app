@@ -4,8 +4,6 @@ import '../modules/login/login_bindings.dart';
 import '../modules/login/login_page.dart';
 
 class LoginRoute {
-  const LoginRoute._();
-
   static final routes = [
     GetPage<LoginPage>(
       name: '/login',
@@ -13,4 +11,6 @@ class LoginRoute {
       binding: LoginBindings(),
     ),
   ];
+
+  const LoginRoute._();
 }

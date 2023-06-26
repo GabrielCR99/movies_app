@@ -6,12 +6,14 @@ import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/message_mixin.dart';
 import '../../services/login/login_service.dart';
 
-class LoginController extends GetxController with LoaderMixin, MessageMixin {
-  final LoginService _service;
-  LoginController({required LoginService service}) : _service = service;
-
+final class LoginController extends GetxController
+    with LoaderMixin, MessageMixin {
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
+
+  final LoginService _service;
+
+  LoginController({required LoginService service}) : _service = service;
 
   @override
   void onInit() {

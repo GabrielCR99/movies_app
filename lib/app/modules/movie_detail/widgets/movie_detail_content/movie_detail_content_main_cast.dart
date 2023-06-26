@@ -19,17 +19,18 @@ class MovieDetailContentMainCast extends StatelessWidget {
         Divider(color: context.greyTheme),
         Obx(
           () => ExpansionPanelList(
-            elevation: 0,
-            expandedHeaderPadding: EdgeInsets.zero,
             expansionCallback: (_, __) => showPanel.toggle(),
+            expandedHeaderPadding: EdgeInsets.zero,
+            elevation: 0,
             children: [
               ExpansionPanel(
-                backgroundColor: Colors.white,
-                isExpanded: showPanel.value,
                 headerBuilder: (_, isExpanded) => Container(
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.all(8),
-                  child: const Text('Elenco', style: TextStyle(fontSize: 16)),
+                  child: const Text(
+                    'Elenco',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
                 body: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -42,6 +43,8 @@ class MovieDetailContentMainCast extends StatelessWidget {
                         const [],
                   ),
                 ),
+                isExpanded: showPanel.value,
+                backgroundColor: Colors.white,
               ),
             ],
           ),

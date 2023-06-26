@@ -18,7 +18,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   @override
   Future<List<MovieModel>> getPopularMovies() async {
     try {
-      final response = await _restClient.get(
+      final response = await _restClient.get<Map<String, dynamic>>(
         '/movie/popular',
         queryParameters: {
           'api_key': FirebaseRemoteConfig.instance.getString('api_token'),
@@ -27,13 +27,14 @@ class MoviesRepositoryImpl implements MoviesRepository {
         },
       );
 
-      final movies = (response.data['results'] ?? const <MovieModel>[]) as List;
+      final movies =
+          (response.data!['results'] ?? const <MovieModel>[]) as List;
 
       return movies
           .cast<Map<String, dynamic>>()
           .map<MovieModel>(MovieModel.fromMap)
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar filmes populares', error: e, stackTrace: s);
 
       Error.throwWithStackTrace(
@@ -46,7 +47,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
     try {
-      final response = await _restClient.get(
+      final response = await _restClient.get<Map<String, dynamic>>(
         '/movie/top_rated',
         queryParameters: {
           'api_key': FirebaseRemoteConfig.instance.getString('api_token'),
@@ -55,13 +56,14 @@ class MoviesRepositoryImpl implements MoviesRepository {
         },
       );
 
-      final movies = (response.data['results'] ?? const <MovieModel>[]) as List;
+      final movies =
+          (response.data!['results'] ?? const <MovieModel>[]) as List;
 
       return movies
           .cast<Map<String, dynamic>>()
           .map<MovieModel>(MovieModel.fromMap)
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar filmes populares', error: e, stackTrace: s);
 
       Error.throwWithStackTrace(
@@ -74,7 +76,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   @override
   Future<MovieDetailModel> getMovieDetail(int id) async {
     try {
-      final response = await _restClient.get(
+      final response = await _restClient.get<Map<String, dynamic>>(
         '/movie/$id',
         queryParameters: {
           'api_key': FirebaseRemoteConfig.instance.getString('api_token'),
@@ -84,8 +86,8 @@ class MoviesRepositoryImpl implements MoviesRepository {
         },
       );
 
-      return MovieDetailModel.fromMap(response.data);
-    } on DioError catch (e, s) {
+      return MovieDetailModel.fromMap(response.data!);
+    } on DioException catch (e, s) {
       log('Erro ao buscar detalhes do filme', error: e, stackTrace: s);
 
       Error.throwWithStackTrace(
@@ -98,7 +100,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   @override
   Future<List<String>> getMovieImages(int id) async {
     try {
-      final response = await _restClient.get(
+      final response = await _restClient.get<Map<String, dynamic>>(
         '/movie/$id/images?api_key=${FirebaseRemoteConfig.instance.getString('api_token')}',
         queryParameters: {
           'api_key': FirebaseRemoteConfig.instance.getString('api_token'),
@@ -108,7 +110,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
         },
       );
 
-      final images = (response.data['posters'] ?? const <String>[]) as List;
+      final images = (response.data!['posters'] ?? const <String>[]) as List;
 
       return images
           .cast<Map<String, dynamic>>()
@@ -116,7 +118,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
             (image) => 'https://image.tmdb.org/t/p/w200${image['file_path']}',
           )
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar imagens do filme', error: e, stackTrace: s);
 
       Error.throwWithStackTrace(

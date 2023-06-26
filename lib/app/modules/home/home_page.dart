@@ -15,10 +15,18 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Navigator(
+        key: Get.nestedKey(HomeController.navigatorKey),
+        initialRoute: '/movies',
+        onGenerateRoute: _onGenerateRoute,
+      ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.movie), label: 'Filmes'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.movie),
+              label: 'Filmes',
+            ),
             BottomNavigationBarItem(
               icon: Icon(MoviesAppIcons.emptyHeart),
               label: 'Favoritos',
@@ -29,33 +37,28 @@ class HomePage extends GetView<HomeController> {
             ),
           ],
           onTap: controller.goToPage,
+          currentIndex: controller.pageIndex,
           selectedItemColor: context.redTheme,
           unselectedItemColor: Colors.grey,
-          currentIndex: controller.pageIndex,
         ),
-      ),
-      body: Navigator(
-        initialRoute: '/movies',
-        key: Get.nestedKey(HomeController.navigatorKey),
-        onGenerateRoute: _onGenerateRoute,
       ),
     );
   }
 
-  Route<dynamic>? _onGenerateRoute(RouteSettings settings) {
+  Route<Object>? _onGenerateRoute(RouteSettings settings) {
     if (settings.name == '/movies') {
       return GetPageRoute(
         settings: settings,
-        page: () => const MoviesPage(),
         binding: MoviesBindings(),
+        page: () => const MoviesPage(),
       );
     }
 
     if (settings.name == '/favorites') {
       return GetPageRoute(
         settings: settings,
-        page: () => const FavoritesPage(),
         binding: FavoritesBindings(),
+        page: () => const FavoritesPage(),
       );
     }
 
